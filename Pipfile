@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+certifi = "==2021.5.30"
+chardet = "==4.0.0"
+click = "==8.0.1"
+flask = "==2.0.1"
+idna = "==3.2"
+itsdangerous = "==2.0.1"
+jinja2 = "==3.0.1"
+markupsafe = "==2.0.1"
+requests = "==2.26.0"
+stripe = "==6.0.0"
+toml = "==0.10.2"
+werkzeug = "==2.0.1"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"

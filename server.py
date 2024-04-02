@@ -8,8 +8,8 @@ import stripe
 
 # This is a public sample test API key.
 # Don’t submit any personally identifiable information in requests made with this key.
-# Sign in to see your own test API key embedded in code samples.
-stripe.api_key = 'sk_test_Ho24N7La5CVDtbmpjc377lJI'
+# Sign in to see your own test API key embedded in code samples. .env API_KEY
+stripe.api_key = 'API_KEY'
 
 from flask import Flask, render_template, jsonify, request
 

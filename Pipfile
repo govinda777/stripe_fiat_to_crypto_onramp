@@ -16,6 +16,7 @@ requests = "==2.26.0"
 stripe = "==6.0.0"
 toml = "==0.10.2"
 werkzeug = "==2.0.1"
+pre-commit = "*"
 
 [dev-packages]
 

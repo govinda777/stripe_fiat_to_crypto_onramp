@@ -9,7 +9,7 @@ import "./App.css";
 // This is a public sample test API key.
 // Don’t submit any personally identifiable information in requests made with this key.
 // Sign in to see your own test API key embedded in code samples.
-const stripeOnrampPromise = loadStripeOnramp("pk_test_XKUpwPvvEnNxMsSzoLm8H3i8");
+const stripeOnrampPromise = loadStripeOnramp(process.env.REACT_APP_STRIPE_API_KEY);
 
 export default function App() {
   const [clientSecret, setClientSecret] = useState("");

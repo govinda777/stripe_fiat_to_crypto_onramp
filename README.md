@@ -3,30 +3,22 @@
 This guide will help you set up a simple page to use Stripe Onramp, including the installation and deployment processes.
 
 ```mermaid
-zenuml
-    title Stripe Onramp Integration
-    @Actor User #FFEBE6
-    @Boundary WebController #0747A6
-    @EC2 <<BFF>> StripeOnrampService #E3FCEF
-    group BusinessService {
-      @Lambda PaymentProcessingService
-      @AzureFunction NotificationService
-    }
+sequenceDiagram
+    participant User as User
+    participant WebController as Web Controller
+    participant StripeOnrampService as Stripe Onramp Service
+    participant PaymentProcessingService as Payment Processing Service
+    participant NotificationService as Notification Service
+    participant StripeAPI as Stripe API
 
-    @Starter(User)
-    // `POST /initiate-payment`
-    WebController.post(paymentDetails) {
-      StripeOnrampService.handlePayment(paymentDetails) {
-        payment = new PaymentIntent(paymentDetails)
-        if(payment != null) {
-          par {
-            PaymentProcessingService.process(payment)
-            NotificationService.sendConfirmation(payment)      
-          }      
-        }
-      }
-    }
-
+    User->>+WebController: Request to initiate payment
+    WebController->>+StripeOnrampService: Forward payment details
+    StripeOnrampService->>+PaymentProcessingService: Process payment
+    PaymentProcessingService->>+StripeAPI: Call Stripe to process payment
+    StripeAPI-->>-PaymentProcessingService: Payment processed
+    PaymentProcessingService-->>-StripeOnrampService: Confirm payment status
+    StripeOnrampService->>+NotificationService: Send payment confirmation
+    NotificationService-->>-User: Payment confirmation sent
 ```
 
 ## Prerequisites
